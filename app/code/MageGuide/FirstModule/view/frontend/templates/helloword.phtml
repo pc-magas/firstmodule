@@ -1,0 +1,16 @@
+<?php
+    $blogposts = $block->getAllBlogPosts();
+?>
+
+<?php if (count($blogposts) > 0): ?>
+    <?php foreach ($blogposts as $blogpost): ?>
+        <article>
+            <h2><?=$this->escapeHtml($blogpost->getTitle());?></h2>
+            <section>
+                <?=$this->escapeHtml($blogpost->getPost());?>
+            </section>
+        </article>
+    <?php endforeach; ?>
+<?php else: ?>
+    <div>NO blog Posts</div>
+<?php endif; ?>

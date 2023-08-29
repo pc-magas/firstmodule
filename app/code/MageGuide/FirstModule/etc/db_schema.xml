@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="blog_posts"
+           resource="default"
+           engine="innodb"
+           comment="Catalog Product Datetime Attribute Backend Table">
+        <column xsi:type="int" name="blog_post_id" unsigned="true" nullable="false" identity="true" comment="primary_key"/>
+        <column xsi:type="varchar" name="title" comment="Blog Post's title" />
+        <column xsi:type="text" name="post" comment="Blog Post's content" />
+        <column xsi:type="timestamp" name="creation_dt" comment="Created Datetime"  on_update="false" nullable="false" default="CURRENT_TIMESTAMP" />
+        <column xsi:type="timestamp" name="update_dt" comment="Last update Datetime" on_update="true" nullable="true" default="CURRENT_TIMESTAMP"  />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_post_id"/>
+        </constraint>
+
+    </table>
+</schema>
