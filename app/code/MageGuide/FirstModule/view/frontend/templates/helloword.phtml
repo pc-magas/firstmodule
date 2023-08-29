@@ -1,16 +1,20 @@
 <?php
+    /**
+     * @var $block MageGuide\FirstModule\Block\HelloWord
+     */
     $blogposts = $block->getAllBlogPosts();
+
+    if (count($blogposts) > 0){
+        echo "<div>NO blog Posts</div>";
+        return;
+    }
 ?>
 
-<?php if (count($blogposts) > 0): ?>
-    <?php foreach ($blogposts as $blogpost): ?>
+<?php foreach ($blogposts as $blogpost): ?>
         <article>
-            <h2><?=$this->escapeHtml($blogpost->getTitle());?></h2>
+            <h2><?=$block->escapeHtml($blogpost->getTitle());?></h2>
             <section>
-                <?=$this->escapeHtml($blogpost->getPost());?>
+                <?=$block->escapeHtml($blogpost->getPost());?>
             </section>
         </article>
-    <?php endforeach; ?>
-<?php else: ?>
-    <div>NO blog Posts</div>
-<?php endif; ?>
+<?php endforeach; ?>

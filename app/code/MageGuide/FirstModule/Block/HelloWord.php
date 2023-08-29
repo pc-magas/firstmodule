@@ -23,12 +23,12 @@ class HelloWord extends \Magento\Framework\View\Element\Template
         $this->collection = $collection;
     }
 
-    public function getWelcomeText()
+    public function getWelcomeText(): string
     {
         return 'Hello World';
     }
 
-    public function getAllBlogPosts()
+    public function getAllBlogPosts(): BlogPosts
     {
         return $this->collection;
     }
