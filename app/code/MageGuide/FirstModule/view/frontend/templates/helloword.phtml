@@ -8,13 +8,19 @@
         echo "<div>NO blog Posts</div>";
         return;
     }
+
 ?>
 
-<?php foreach ($blogposts as $blogpost): ?>
+
+<?php
+    /**
+     * @var $blogpost \MageGuide\FirstModule\Model\BlogPost
+     */
+    foreach ($blogposts as $blogpost): ?>
         <article>
             <h2><?=$block->escapeHtml($blogpost->getTitle());?></h2>
             <section>
-                <?=$block->escapeHtml($blogpost->getPost());?>
+                <?=$block->escapeHtml(substr($blogpost->getPost(),0,10));?> ... <a href="<?=$block->getUrl("blog/blogpost",['blogpost_id'=>1]);?>">Read More</a>
             </section>
         </article>
 <?php endforeach; ?>

@@ -4,5 +4,8 @@
         <route frontName="myroute" id="myroute">
             <module name="MageGuide_FirstModule"/>
         </route>
+        <route frontName="blog" id="blogposts">
+            <module name="MageGuide_FirstModule"/>
+        </route>
     </router>
 </config>

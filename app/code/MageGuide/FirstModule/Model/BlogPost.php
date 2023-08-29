@@ -9,4 +9,6 @@ class BlogPost extends \Magento\Framework\Model\AbstractModel
     {
         $this->_init(BlogPostResource::class);
     }
+
+
 }

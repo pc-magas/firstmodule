@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var $block MageGuide\FirstModule\Block\BlogPost
+ */
+    $blogPost = $block->getBlogPost();
+?>
+
+<h2><?=$block->escapeHtml($blogPost->getTitle());?></h2>
+<article>
+    <?=$block->escapeHtml($blogPost->getPost());?>
+</article>
