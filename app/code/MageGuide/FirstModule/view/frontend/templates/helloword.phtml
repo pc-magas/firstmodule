@@ -4,7 +4,7 @@
      */
     $blogposts = $block->getAllBlogPosts();
 
-    if (count($blogposts) > 0){
+    if (count($blogposts) <= 0){
         echo "<div>NO blog Posts</div>";
         return;
     }
