@@ -5,7 +5,9 @@
     $blogPost = $block->getBlogPost();
 ?>
 
-<h2><?=$block->escapeHtml($blogPost->getTitle());?></h2>
-<article>
-    <?=$block->escapeHtml($blogPost->getPost());?>
+<article class="blogpost">
+    <h2><?=$block->escapeHtml($blogPost->getTitle());?></h2>
+    <section>
+        <?=$block->escapeHtml($blogPost->getPost());?>
+    </section>
 </article>
