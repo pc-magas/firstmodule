@@ -8,5 +8,14 @@
 
         <referenceBlock name="catalog.compare.sidebar" remove="true" />
         <referenceBlock name="wishlist_sidebar" remove="true" />
+
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Cms\Block\Block" name="the_rock">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">the_rock</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
     </body>
 </page>
