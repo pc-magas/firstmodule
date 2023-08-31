@@ -23,11 +23,6 @@ class BlogPostList extends \Magento\Framework\View\Element\Template
         $this->collection = $collection;
     }
 
-    public function getWelcomeText(): string
-    {
-        return 'Hello World';
-    }
-
     public function getAllBlogPosts(): BlogPosts
     {
         return $this->collection;
