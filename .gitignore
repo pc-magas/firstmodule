@@ -70,3 +70,4 @@ Gruntfile.js.sample
 .htaccess
 .htaccess.sample
 grunt-config.json.sample
+.idea

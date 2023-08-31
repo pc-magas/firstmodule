@@ -11,3 +11,19 @@
         <?=$block->escapeHtml($blogPost->getPost());?>
     </section>
 </article>
+
+<?php
+
+ $products = $block->getRelatedProducts($blogPost->getSkus());
+?>
+
+<section style="display: flex; flex-direction: row;">
+    <?php foreach ($products as $product): ?>
+        <div>
+            <?=$block->getImageHtml($product);?>
+            <h4>
+                <?=$product->getName(); ?>
+            </h4>
+        </div>
+    <?php endforeach; ?>
+</section>
