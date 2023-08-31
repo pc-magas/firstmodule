@@ -5,7 +5,7 @@ namespace MageGuide\FirstModule\Block;
 use Magento\Framework\View\Element\Template;
 use MageGuide\FirstModule\Model\ResourceModel\BlogPost\Collection as BlogPosts;
 
-class HelloWord extends \Magento\Framework\View\Element\Template
+class BlogPostList extends \Magento\Framework\View\Element\Template
 {
     /**
      * @var BlogPosts

@@ -33,7 +33,7 @@ class BlogpostSeeder extends Command
         for($i=self::BLOGPOSTS_NUM;$i>0;$i--){
             $blogPost = ObjectManager::getInstance()->create(BlogPost::class);
             $blogPost->setTitle("BLogpost ".microtime());
-            $blogPost->setBody("BLogpost Body".microtime());
+            $blogPost->setPost("BLogpost Body".microtime());
             $resource = $blogPost->getResource();
             $resource->save($blogPost);
             $progressBar->advance();
