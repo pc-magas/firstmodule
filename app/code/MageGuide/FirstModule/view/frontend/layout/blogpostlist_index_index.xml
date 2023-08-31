@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="MageGuide\FirstModule\Block\BlogPostList" name="mageguide.firstmodule.blogpostlist" template="MageGuide_FirstModule::blogpostlist.phtml" />
+                <block class="MageGuide\FirstModule\Block\BlogPostList" name="mageguide.firstmodule.blogpostlist" template="MageGuide_FirstModule::blogpostlist.phtml" />
         </referenceContainer>
 
         <referenceBlock name="catalog.compare.sidebar" remove="true" />

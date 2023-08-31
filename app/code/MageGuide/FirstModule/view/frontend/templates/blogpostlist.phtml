@@ -2,7 +2,7 @@
     /**
      * @var $block MageGuide\FirstModule\Block\BlogPostList
      */
-    $blogposts = $block->getAllBlogPosts();
+    $blogposts = $block->getBlogPosts();
 
     if (count($blogposts) <= 0){
         echo "<div>NO blog Posts</div>";
@@ -10,6 +10,8 @@
     }
 
 ?>
+
+<?=$block->getPaginatedBlogPosts()->toHtml();?>
 
 <?php
     /**
