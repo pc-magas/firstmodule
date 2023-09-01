@@ -106,7 +106,7 @@ class ActionList
             }
         } else {
             $data = $cache->load($cacheKey);
-            if (!$data) {
+            if ( true || !$data) {
                 $this->actions = $moduleReader->getActionFiles();
                 $cache->save($this->serializer->serialize($this->actions), $cacheKey);
             } else {
@@ -165,6 +165,7 @@ class ActionList
     private function validateActionClass(string $fullPath): bool
     {
         if (isset($this->actions[$fullPath])) {
+
             if (!is_subclass_of($this->actions[$fullPath], $this->actionInterface)) {
                 return false;
             }

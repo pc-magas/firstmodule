@@ -9,9 +9,8 @@
         return;
     }
 
+    echo $block->getChildBlock('pager')->setAvailableLimit([5 => 5, 10 => 10, 15 => 15, 20 => 20])->setCollection($blogposts)->setShowPerPage(true)->toHtml();
 ?>
-
-<?=$block->getPaginatedBlogPosts()->toHtml();?>
 
 <?php
     /**

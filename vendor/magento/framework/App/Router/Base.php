@@ -163,7 +163,6 @@ class Base implements \Magento\Framework\App\RouterInterface
     public function match(\Magento\Framework\App\RequestInterface $request)
     {
         $params = $this->parseRequest($request);
-
         return $this->matchAction($request, $params);
     }
 
@@ -282,7 +281,6 @@ class Base implements \Magento\Framework\App\RouterInterface
         if (empty($modules) === true) {
             return null;
         }
-
         /**
          * Going through modules to find appropriate controller
          */
@@ -299,6 +297,7 @@ class Base implements \Magento\Framework\App\RouterInterface
             $currentModuleName = $moduleName;
 
             $actionClassName = $this->actionList->get($moduleName, $this->pathPrefix, $actionPath, $action);
+
             if (!$actionClassName || !is_subclass_of($actionClassName, $this->actionInterface)) {
                 continue;
             }

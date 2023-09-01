@@ -139,6 +139,9 @@ class FrontController implements FrontControllerInterface
         $result = null;
         while (!$request->isDispatched() && $routingCycleCounter++ < 100) {
             /** @var \Magento\Framework\App\RouterInterface $router */
+            /**
+             * @var $router \Magento\Backend\App\Router
+             */
             foreach ($this->_routerList as $router) {
                 try {
                     $actionInstance = $router->match($request);

@@ -124,6 +124,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     public function dispatch(RequestInterface $request)
     {
+        die("here");
         if ($request->isDispatched() && $request->getActionName() !== 'denied' && !$this->_isAllowed()) {
             $this->_response->setStatusHeader(403, '1.1', 'Forbidden');
             if (!$this->_auth->isLoggedIn()) {

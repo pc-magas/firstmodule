@@ -3,7 +3,8 @@
     <module name="MageGuide_FirstModule" setup_version="1.0.2">
         <!-- We ensure that a module will run after the modules specified here -->
         <sequence>
-            <!-- Manilpulate prioratization -->
+            <module name="Magento_Backend" />
+            <module name="Magento_Ui" />
         </sequence>
     </module>
 </config>

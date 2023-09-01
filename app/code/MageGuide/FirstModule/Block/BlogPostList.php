@@ -25,25 +25,29 @@ class BlogPostList extends \Magento\Framework\View\Element\Template
         $this->collection = $collection;
     }
 
+    private function getLimit()
+    {
+        return ($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 10;
+    }
 
     public function getBlogPosts(): BlogPosts
     {
         $page=($this->getRequest()->getParam('p'))? $this->getRequest()->getParam('p') : 1;
         //get values of current limit
-        $limit=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 10;
+        $limit=$this->getLimit();
         return $this->results?? ($this->results=$this->collection->setPageSize($limit)->setCurPage($page)->addOrder('creation_dt','DESC'));
     }
 
-    public function getPaginatedBlogPosts(){
-
-        $limit=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 10;
-
-        return $this->getLayout()->createBlock(
-            'Magento\Theme\Block\Html\Pager',
-            'pager'
-        )->setAvailableLimit([5 => 5, 10 => 10, 15 => 15, 20 => 20])
-            ->setLimit($limit)
-            ->setShowPerPage(true)
-            ->setCollection($this->getBlogPosts());
-    }
+//    public function getPaginatedBlogPosts()
+//    {
+//        $limit=$this->getLimit();
+//
+//        return $this->getLayout()->createBlock(
+//            'Magento\Theme\Block\Html\Pager',
+//            'pager'
+//        )->setAvailableLimit([5 => 5, 10 => 10, 15 => 15, 20 => 20])
+//            ->setLimit($limit)
+//            ->setShowPerPage(true)
+//            ->setCollection($this->getBlogPosts());
+//    }
 }

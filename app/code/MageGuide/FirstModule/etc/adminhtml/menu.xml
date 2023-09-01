@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- @todo Set my Own parent Category -->
+        <add
+             id="MageGuide_FirstModule::home"
+             title="Blog Posts"
+             module="MageGuide_FirstModule"
+             sortOrder="1000"
+             parent="Magento_Catalog::catalog_categories"
+             resource="Magento_Catalog::catalog"
+             action="adminblogposts/index/index"
+        />
+    </menu>
+</config>
