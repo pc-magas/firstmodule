@@ -31,9 +31,4 @@ class DataProvider extends AbstractDataProvider
     {
         return $this->blogpostFactory->create();
     }
-
-    public function getData()
-    {
-        return [];
-    }
 }

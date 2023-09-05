@@ -5,16 +5,16 @@
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">customer_form.customer_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Customer Information</item>
+        <item name="label" xsi:type="string" translate="true">Blogpost Actions</item>
         <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Customer\Block\Adminhtml\Edit\SaveButton"/>
-            <button name="back" class="Magento\Customer\Block\Adminhtml\Edit\BackButton"/>
+            <button name="save" class="MageGuide\FirstModule\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="back" class="MageGuide\FirstModule\Block\Adminhtml\Edit\BackButton"/>
         </buttons>
         <layout>
-            <navContainerName>left</navContainerName>
+            <navContainerName>content</navContainerName>
             <type>tabs</type>
         </layout>
         <deps>
@@ -28,7 +28,7 @@
         <field name="blog_post_id" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">blogpost</item>
+                    <item name="source" xsi:type="string">blogpost_data_source</item>
                 </item>
             </argument>
             <settings>
@@ -36,6 +36,48 @@
                 <visible>false</visible>
             </settings>
         </field>
+        <field name="title" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">blogpost_data_source</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Title</label>
+                <dataType>text</dataType>
+                <visible>true</visible>
+            </settings>
+        </field>
+
+        <field name="content" sortOrder="10" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Contents</label>
+                <dataScope>content</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+
     </fieldset>
 
     <dataSource name="blogpost_data_source">
@@ -44,6 +86,9 @@
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
         <dataProvider
             class="MageGuide\FirstModule\Model\BlogPost\DataProvider"
             name="blogpost_data_source">

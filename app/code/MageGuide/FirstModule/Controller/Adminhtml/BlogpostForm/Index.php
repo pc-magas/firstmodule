@@ -9,7 +9,7 @@ class Index extends Action
     /** @var \Magento\Framework\View\Result\PageFactory  */
     protected $resultPageFactory;
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
+        \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;

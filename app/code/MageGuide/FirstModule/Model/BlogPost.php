@@ -18,4 +18,10 @@ class BlogPost extends \Magento\Framework\Model\AbstractModel
         $skus=array_filter($skus);
         return $skus;
     }
+
+    public function setTitle(string $title)
+    {
+        return $this->setData('title',strip_tags($title));
+    }
+
 }
