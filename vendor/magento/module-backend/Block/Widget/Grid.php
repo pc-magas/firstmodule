@@ -299,6 +299,7 @@ class Grid extends \Magento\Backend\Block\Widget
     {
         if ($this->getCollection()) {
             $field = $column->getFilterIndex() ? $column->getFilterIndex() : $column->getIndex();
+
             if ($column->getFilterConditionCallback()) {
                 $object = isset($column->getFilterConditionCallback()['object'])
                     ? $column->getFilterConditionCallback()['object'] : $column->getFilterConditionCallback()[0];

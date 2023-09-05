@@ -12,5 +12,15 @@
              resource="Magento_Catalog::catalog"
              action="adminblogposts/index/index"
         />
+
+        <add
+            id="MageGuide_FirstModule::add"
+            title="Blog Posts Add"
+            module="MageGuide_FirstModule"
+            sortOrder="1000"
+            parent="Magento_Catalog::catalog_categories"
+            resource="Magento_Catalog::catalog"
+            action="adminblogposts/blogpostform/index"
+        />
     </menu>
 </config>

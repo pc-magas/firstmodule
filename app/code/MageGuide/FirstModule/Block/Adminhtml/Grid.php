@@ -34,7 +34,7 @@ class Grid extends Extended
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('index');
+        $this->setId('blog_post_id');
         $this->setDefaultSort('created_at');
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
@@ -43,7 +43,9 @@ class Grid extends Extended
     {
         $demo = $this->demoFactory->create()
             ->addFieldToSelect('*');
+
         $demo->addFieldToFilter('blog_post_id', array('neq' => ''));
+
         $this->setCollection($demo);
 
         return parent::_prepareCollection();
@@ -95,7 +97,7 @@ class Grid extends Extended
         $this->addColumn(
             'updated_at',
             [
-                'header' => __('Created At'),
+                'header' => __('Last Update Datetime'),
                 'index' => 'update_dt',
                 'type' => 'datetime',
             ]
