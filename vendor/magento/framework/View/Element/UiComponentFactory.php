@@ -182,6 +182,7 @@ class UiComponentFactory extends DataObject
      */
     protected function argumentsResolver($identifier, array $componentData)
     {
+
         $attributes = $componentData[ManagerInterface::COMPONENT_ATTRIBUTES_KEY];
         $className = $attributes['class'];
         unset($attributes['class']);

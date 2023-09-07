@@ -7,4 +7,25 @@
             </argument>
         </arguments>
     </type>
+
+
+    <type name="MageGuide\FirstModule\Ui\DataProvider\BlogPost\ListingDataProvider">
+        <plugin name="dev_grid_attributes" type="MageGuide\FirstModule\Plugin\AddAttributesToUiDataProvider" />
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blogpost_data_provider" xsi:type="string">DevGridCategoryCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DevGridCategoryCollection" type="MageGuide\FirstModule\Ui\DataProvider\BlogPost\Listing\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blog_posts</argument>
+            <argument name="resourceModel" xsi:type="string">MageGuide\FirstModule\Model\ResourceModel\BlogPostResource</argument>
+        </arguments>
+    </virtualType>
+
 </config>
