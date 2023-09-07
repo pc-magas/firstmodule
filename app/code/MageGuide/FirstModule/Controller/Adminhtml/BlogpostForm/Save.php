@@ -22,7 +22,6 @@ class Save extends Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-        var_dump($data);
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $resultRedirect->setUrl($this->_redirect->getRefererUrl());
 
@@ -35,7 +34,7 @@ class Save extends Action
         }
 
         $this->blogPostModel->setTitle($data['title']);
-        $this->blogPostModel->setContent($data['content']);
+        $this->blogPostModel->setContent($data['post']);
 
         try{
             $this->blogPostModel->save();

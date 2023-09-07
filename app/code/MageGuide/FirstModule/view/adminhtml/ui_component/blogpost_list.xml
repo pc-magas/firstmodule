@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blogpost_list.blogpost_data_provider</item>
+            <item name="deps" xsi:type="string">blogpost_list.blogpost_data_provider</item>
+        </item>
+        <item name="spinner" xsi:type="string">blogpost_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string">Insert A new Blogpost</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">adminblogposts/blogpostform/index</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="blogpost_data_provider">
+        <argument name="dataProvider" xsi:type="configurableObject">
+
+            <argument name="class" xsi:type="string">MageGuide\FirstModule\Ui\DataProvider\BlogPost\ListingDataProvider</argument>
+            <argument name="name" xsi:type="string">blogpost_data_provider</argument>
+            <argument name="primaryFieldName" xsi:type="string">blog_post_id</argument>
+            <argument name="requestFieldName" xsi:type="string">blog_post_id</argument>
+
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render" />
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">blog_post_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <paging name="listing_paging" />
+    </listingToolbar>
+
+    <columns name="blogpost_columns">
+
+        <column name="blog_post_id">
+            <settings>
+                <label translate="true">ID</label>
+                <resizeDefaultWidth>25</resizeDefaultWidth>
+            </settings>
+        </column>
+
+        <column name="title">
+            <settings>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+
+        <column name="skus">
+            <settings>
+                <label translate="true">skus</label>
+            </settings>
+        </column>
+
+        <column name="creation_dt" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <dataType>date</dataType>
+                <label translate="true">Creation Datetime</label>
+            </settings>
+        </column>
+
+        <column name="update_dt" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <dataType>date</dataType>
+                <label translate="true">Update Datetime</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="MageGuide\FirstModule\Ui\Component\Listing\Column\EditAction" sortOrder="200">
+            <argument name="data" xsi:type="array">
+                <item name="editUrl" xsi:type="string">adminblogposts/blogpostform/index</item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>
