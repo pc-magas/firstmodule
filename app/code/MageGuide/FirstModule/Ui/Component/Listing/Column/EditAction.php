@@ -36,7 +36,7 @@ class EditAction extends Column
             $item[$name]=[
                 'edit'=>[
                     'href'=>$this->urlBuilder->getUrl($url,[
-                        'blogpost_id'=>$blogpost_id
+                        'blog_post_id'=>$blogpost_id
                     ]),
                     'label'=>__('Edit')
                 ]
