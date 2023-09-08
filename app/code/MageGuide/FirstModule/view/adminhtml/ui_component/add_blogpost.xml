@@ -15,10 +15,6 @@
             <button name="save" class="MageGuide\FirstModule\Block\Adminhtml\Edit\SaveButton"/>
             <button name="back" class="MageGuide\FirstModule\Block\Adminhtml\Edit\BackButton"/>
         </buttons>
-        <layout>
-            <navContainerName>content</navContainerName>
-            <type>tabs</type>
-        </layout>
         <namespace>add_blogpost</namespace>
         <dataScope>data</dataScope>
         <deps>
