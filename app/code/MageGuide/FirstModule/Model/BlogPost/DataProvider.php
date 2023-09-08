@@ -40,7 +40,6 @@ class DataProvider extends AbstractDataProvider
             $data[$item->getBlogPostId()]=$item->getData();
         }
 
-//        echo "<pre>".json_encode($data,384)."</pre>"; die();
         return $data;
     }
 
