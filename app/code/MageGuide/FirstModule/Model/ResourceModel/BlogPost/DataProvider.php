@@ -1,6 +1,6 @@
 <?php
 
-namespace MageGuide\FirstModule\Model\BlogPost;
+namespace MageGuide\FirstModule\Model\ResourceModel\BlogPost;
 
 use MageGuide\FirstModule\Model\ResourceModel\BlogPost\Collection as BlogPosts;
 use Magento\Ui\DataProvider\AbstractDataProvider;

@@ -1,0 +1,19 @@
+type BlogPost {
+    blog_post_id: ID
+    title: String
+    post: String
+}
+
+input BlogpostAttributeFilterInput {
+    page: Int
+    limit: Int
+}
+
+type Query {
+    allBlogPosts(input: BlogpostAttributeFilterInput) :
+    [BlogPost] @resolver(class: "\\MageGuide\\FirstModule\\Model\\Resolver\\GetBlogPosts")
+    @doc(description:"Retrieve All BlogPosts")
+    @cache(cacheable: false)
+}
+
+
