@@ -1,0 +1,7 @@
+type BlogPostProduct  {
+    sku: String
+    image: String
+}
+extend type BlogPost {
+    products: [BlogPostProduct] @resolver(class: "\\MageGuide\\SecondModule\\Model\\Resolver\\GetBlogPostsProducts")
+}
