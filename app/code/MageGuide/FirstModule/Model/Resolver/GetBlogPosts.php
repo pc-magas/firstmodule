@@ -26,11 +26,14 @@ class GetBlogPosts implements ResolverInterface
         $page = $args['input']['page']>0?$args['input']['page']:1;
         $limit = $args['input']['limit']>0?$args['input']['limit']:10;
 
+        if(isset($args['input']['have_skus']) && $args['input']['have_skus']){
+            $this->collection->addFieldToFilter('skus',[['neq'=>'NULL']]);
+        }
+
         $results = $this->collection
                 ->setPageSize($limit)
                 ->setCurPage($page)
                 ->addOrder('creation_dt','DESC');
-
         return $results->load()->getData();
     }
 }

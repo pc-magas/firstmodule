@@ -19,6 +19,15 @@ class BlogPost extends \Magento\Framework\Model\AbstractModel
         return $skus;
     }
 
+    public function setSkus($skus)
+    {
+        if(is_array($skus)){
+            $skus = implode(',',$skus);
+        }
+
+        return $this->setData('skus',$skus);
+    }
+
     public function setTitle(string $title)
     {
         return $this->setData('title',strip_tags($title));
