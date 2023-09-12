@@ -2,6 +2,7 @@
 
 namespace MageGuide\SecondModule\Model\Resolver;
 
+use Magento\Bundle\Plugin\Catalog\Helper\Product;
 use Magento\Catalog\Block\Product\ImageBuilder;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -18,16 +19,20 @@ class GetBlogPostsProducts implements ResolverInterface
     private ProductCollectionFactory $productCollectionFactory;
     private ValueFactory $valueFactory;
 
+    private ImageBuilder $imageBuilder;
+
     private $skus = [];
 
     private $results = [];
 
     public function __construct(
         ProductCollectionFactory $collectionFactory,
-        ValueFactory $valueFactory
+        ValueFactory $valueFactory,
+        ImageBuilder $imageBuilder
     ){
         $this->productCollectionFactory = $collectionFactory;
         $this->valueFactory = $valueFactory;
+        $this->imageBuilder = $imageBuilder;
     }
 
     public function resolve(   Field $field,
@@ -48,18 +53,35 @@ class GetBlogPostsProducts implements ResolverInterface
         $this->skus = array_merge($this->skus,$skus);
         $this->skus = array_unique($this->skus);
 
-        return $this->valueFactory->create(function () {
+        return $this->valueFactory->create(function() use ($value,$skus) {
 
-                if(!empty($this->results)){
-                    return $this->results;
-                }
-                /**
-                 * @var \Magento\Catalog\Model\ResourceModel\Product\Collection
-                 */
-                $productCollection = $this->productCollectionFactory->create();
-                $productCollection->addAttributeToSelect(['sku','image'])->getSelect()->where('sku IN (?)',$this->skus);
-                $this->results = $productCollection->load()->getItems();
-                return $this->results;
+                $this->loadResults();
+
+                return array_map(function($sku){
+                    $data = $this->results[$sku]->getData();
+                    return $data;
+                },$skus);
             });
+    }
+
+    function loadResults(): void
+    {
+        if(!empty($this->results)){
+            return;
+        }
+        /**
+         * @var \Magento\Catalog\Model\ResourceModel\Product\Collection
+         */
+        $productCollection = $this->productCollectionFactory->create();
+        $productCollection->addAttributeToSelect(['sku','image'])->getSelect()->where('sku IN (?)',$this->skus);
+        $items = $productCollection->load()->getItems();
+
+        /**
+         * @var $item Product
+         */
+        foreach ($items as $item){
+            $image = $this->imageBuilder->create($item,'category_page_list');
+            $this->results[$item->getSku()]=$item;
+        }
     }
 }

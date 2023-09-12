@@ -14,7 +14,7 @@ type Query {
     allBlogPosts(input: BlogpostAttributeFilterInput) :
     [BlogPost] @resolver(class: "\\MageGuide\\FirstModule\\Model\\Resolver\\GetBlogPosts")
     @doc(description:"Retrieve All BlogPosts")
-    @cache(cacheable: false)
+    @cache(cacheable: true)
 }
 
 
