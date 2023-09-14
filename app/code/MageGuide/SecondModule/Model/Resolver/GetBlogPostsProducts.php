@@ -28,7 +28,8 @@ class GetBlogPostsProducts implements ResolverInterface
     public function __construct(
         ProductCollectionFactory $collectionFactory,
         ValueFactory $valueFactory,
-        ImageBuilder $imageBuilder
+        ImageBuilder $imageBuilder,
+        \Magento\Store\Model\App\Emulation $emulation
     ){
         $this->productCollectionFactory = $collectionFactory;
         $this->valueFactory = $valueFactory;
@@ -76,6 +77,7 @@ class GetBlogPostsProducts implements ResolverInterface
         $productCollection->addAttributeToSelect(['sku','image'])->getSelect()->where('sku IN (?)',$this->skus);
         $items = $productCollection->load()->getItems();
 
+        $this->emulation->startEnvironmentEmulation($storeId, \Magento\Framework\App\Area::AREA_FRONTEND, true);
         /**
          * @var $item Product
          */
@@ -83,5 +85,6 @@ class GetBlogPostsProducts implements ResolverInterface
             $image = $this->imageBuilder->create($item,'category_page_list');
             $this->results[$item->getSku()]=$item;
         }
+        $this->emulation->stopEnvironmentEmulation();
     }
 }
