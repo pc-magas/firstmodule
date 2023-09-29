@@ -22,5 +22,15 @@
             resource="Magento_Catalog::catalog"
             action="adminblogposts/blogpostform/index"
         />
+
+        <!-- Add to top level-->
+        <add id="MageGuide_FirstModule::top_level" title="MageGuide" module="MageGuide_FirstModule" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="MageGuide_CustomerEmails::top_level_entry"
+             title="CustomerEmail"
+             module="MageGuide_FirstModule"
+             sortOrder="1500"
+             resource="Magento_Backend::content"
+             parent="MageGuide::top_level"
+             action="adminblogposts/blogpostform/index"/>
     </menu>
 </config>
